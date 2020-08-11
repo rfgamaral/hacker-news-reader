@@ -1,0 +1,11 @@
+{
+  "./**/*.{js,jsx,ts,tsx}": [
+    "eslint --fix"
+  ],
+  "./**/*.{json,yml}": [
+    "prettier --write"
+  ],
+  "./.!(browserslist)rc": [
+    "prettier --write"
+  ]
+}

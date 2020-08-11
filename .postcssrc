@@ -1,0 +1,13 @@
+{
+  "modules": true,
+  "plugins": {
+    "tailwindcss": {},
+    "postcss-preset-env": {},
+    "postcss-modules": {
+      "globalModulePaths": [
+        "tailwind\\.css$"
+      ],
+      "localsConvention": "camelCaseOnly"
+    }
+  }
+}

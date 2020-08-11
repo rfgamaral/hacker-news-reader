@@ -1,0 +1,45 @@
+{
+  "extends": [
+    "@rfgamaral/eslint-config-typescript-unified/recommended-react-hooks",
+    "plugin:jest/recommended",
+    "plugin:jest/style"
+  ],
+  "env": {
+    "browser": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
+  "plugins": [
+    "jest"
+  ],
+  "ignorePatterns": [
+    "/.cache/**/*",
+    "/coverage/**/*",
+    "/dist/**/*",
+    "/*.config.js"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.{js,jsx}"
+      ],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": "off"
+      }
+    },
+    {
+      "files": [
+        "*.{test,spec}.{js,jsx,ts,tsx}"
+      ],
+      "rules": {
+        "import/no-extraneous-dependencies": [
+          "error",
+          {
+            "devDependencies": true
+          }
+        ]
+      }
+    }
+  ]
+}
