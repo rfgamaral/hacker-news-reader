@@ -3,12 +3,12 @@ import React from 'react';
 import { useHackerNews } from '../hooks';
 import { formatTimestampToUTCString, pickRandomElementFromArray } from '../utils';
 
+const TITLE_WIDTH_CLASSES = ['w-8/12', 'w-7/12', 'w-6/12'];
+const AUTHOR_WIDTH_CLASSES = ['w-32', 'w-24', 'w-20', 'w-16'];
+
 interface StoryItemProps {
     id: number;
 }
-
-const TITLE_WIDTH_CLASSES = ['w-8/12', 'w-7/12', 'w-6/12'];
-const AUTHOR_WIDTH_CLASSES = ['w-32', 'w-24', 'w-20', 'w-16'];
 
 function StoryItem(props: StoryItemProps): JSX.Element {
     const { id } = props;
