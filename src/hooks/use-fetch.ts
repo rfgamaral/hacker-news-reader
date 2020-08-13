@@ -41,6 +41,10 @@ function useFetch(url: string, options?: RequestInit): FetchState {
                 const response = await fetch(url, options);
                 const data = await response.json();
 
+                if (!response.ok) {
+                    throw Error(`${response.status} ${response.statusText}`);
+                }
+
                 if (isMounted) {
                     dispatch({ type: 'RESOLVE', data });
                 }
