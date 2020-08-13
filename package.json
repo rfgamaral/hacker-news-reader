@@ -32,6 +32,8 @@
     "test": "run-s test:once",
     "test:once": "jest --coverage",
     "test:watch": "jest --watch",
+    "vercel:development": "vercel",
+    "vercel:production": "vercel --prod",
     "workbox:generate": "workbox generateSW workbox.config.js"
   },
   "alias": {
@@ -81,6 +83,7 @@
     "ts-jest": "26.2.0",
     "typescript": "3.9.7",
     "typescript-plugin-css-modules": "2.4.0",
+    "vercel": "19.2.0",
     "workbox-cli": "5.1.3"
   }
 }
