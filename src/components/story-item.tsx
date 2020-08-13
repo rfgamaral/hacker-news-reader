@@ -25,7 +25,11 @@ function StoryItem(props: StoryItemProps): JSX.Element {
     return (
         <div className="border border-gray-300 bg-gray-100 shadow rounded-md p-4 w-full">
             {!storyItem.hasFailed ? (
-                <div className={`${storyItem.isLoaded || 'animate-pulse'} flex flex-col space-y-4`}>
+                <div
+                    className={`flex flex-col space-y-4 ${
+                        !storyItem.isLoaded ? ' animate-pulse' : ''
+                    }`}
+                >
                     <div className="flex space-x-12 justify-between items-center">
                         {storyItem.isLoaded ? (
                             <>
