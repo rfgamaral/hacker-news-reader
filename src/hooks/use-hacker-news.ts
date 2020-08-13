@@ -20,8 +20,9 @@ type HackerNewsData<TPath> = TPath extends 'newstories'
     : never;
 
 type HackerNewsResult<TPath> =
-    | { isLoaded: false }
-    | { isLoaded: true; data: HackerNewsData<TPath> };
+    | { hasFailed: true; isLoaded: false }
+    | { hasFailed: false; isLoaded: false }
+    | { hasFailed: false; isLoaded: true; data: HackerNewsData<TPath> };
 
 function buildApiUrl(path: Path, id?: number): string {
     const url = [API_PREFIX_URL, path];
@@ -38,11 +39,15 @@ function useHackerNews<TPath extends Path>(path: TPath, id?: number): HackerNews
 
     const response = useFetch(apiUrl);
 
-    if (response.status !== 'SUCCESS') {
-        return { isLoaded: false };
+    if (response.status === 'FAILURE') {
+        return { hasFailed: true, isLoaded: false };
     }
 
-    return { isLoaded: true, data: response.data as HackerNewsData<TPath> };
+    if (response.status !== 'SUCCESS') {
+        return { hasFailed: false, isLoaded: false };
+    }
+
+    return { hasFailed: false, isLoaded: true, data: response.data as HackerNewsData<TPath> };
 }
 
 export { useHackerNews };
