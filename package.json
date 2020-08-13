@@ -18,7 +18,7 @@
     }
   },
   "scripts": {
-    "build": "run-s clean check parcel:build",
+    "build": "run-s clean check parcel:build workbox:generate",
     "check": "run-s check:*",
     "check:eslint": "eslint './src/**/*.{js,jsx,ts,tsx}'",
     "check:typescript": "tsc --noEmit",
@@ -27,11 +27,12 @@
     "clean:coverage": "rimraf ./coverage",
     "clean:dist": "rimraf ./dist",
     "parcel:build": "parcel build ./src/index.html --out-dir ./dist",
-    "parcel:serve": "parcel serve ./src/index.html --out-dir ./dist --host localhost.ricardoamaral.dev --cert ./config/ssl/certificate.cer --key ./config/ssl/private.key --open",
+    "parcel:serve": "parcel serve ./src/index.html --out-dir ./dist --host localhost.ricardoamaral.dev --cert ./config/ssl/certificate.cer --key ./config/ssl/private.key",
     "start": "run-s clean parcel:serve",
     "test": "run-s test:once",
     "test:once": "jest --coverage",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "workbox:generate": "workbox generateSW workbox.config.js"
   },
   "alias": {
     "react-dom": "@hot-loader/react-dom"
@@ -68,6 +69,7 @@
     "parcel-plugin-pwa-manifest": "3.0.10",
     "postcss-modules": "3.2.0",
     "postcss-preset-env": "6.7.0",
+    "posthtml-expressions": "1.4.5",
     "prettier": "2.0.5",
     "react-test-renderer": "16.13.1",
     "rimraf": "3.0.2",
@@ -78,6 +80,7 @@
     "stylelint-order": "4.1.0",
     "ts-jest": "26.2.0",
     "typescript": "3.9.7",
-    "typescript-plugin-css-modules": "2.4.0"
+    "typescript-plugin-css-modules": "2.4.0",
+    "workbox-cli": "5.1.3"
   }
 }

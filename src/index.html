@@ -11,5 +11,28 @@
         <div id="root"></div>
 
         <script src="index.tsx"></script>
+
+        <if condition="NODE_ENV === 'production'">
+            <script>
+                const serviceWorkerScript = '{{ SERVICE_WORKER }}';
+
+                if ('serviceWorker' in navigator) {
+                    window.addEventListener('load', () => {
+                        navigator.serviceWorker
+                            .register(serviceWorkerScript)
+                            .then((registration) => {
+                                console.info(
+                                    `[ServiceWorker] Registration successful with scope: ${registration.scope}`
+                                );
+                            })
+                            .catch((error) => {
+                                console.warn(
+                                    `[ServiceWorker] Registration failed with error: ${error}`
+                                );
+                            });
+                    });
+                }
+            </script>
+        </if>
     </body>
 </html>
