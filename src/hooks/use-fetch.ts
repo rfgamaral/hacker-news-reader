@@ -46,6 +46,10 @@ function useFetch(url: string, options?: RequestInit): FetchState {
                 }
 
                 if (isMounted) {
+                    if (!data) {
+                        throw new Error('Null/Empty Response');
+                    }
+
                     dispatch({ type: 'RESOLVE', data });
                 }
             } catch (error) {
