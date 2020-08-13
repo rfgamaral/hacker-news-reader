@@ -30,7 +30,11 @@ function StoryItem(props: StoryItemProps): JSX.Element {
                         {storyItem.isLoaded ? (
                             <>
                                 <a
-                                    className="text-gray-800 hover:text-teal-600 hover:underline font-semibold truncate leading-none h-5"
+                                    className={`font-semibold truncate leading-none h-5 ${
+                                        storyItem.data.url
+                                            ? 'text-gray-800 hover:text-teal-500 hover:underline'
+                                            : 'text-gray-600'
+                                    }`}
                                     href={storyItem.data.url}
                                     target="_blank"
                                     rel="noreferrer"
