@@ -18,10 +18,7 @@
     }
   },
   "scripts": {
-    "build": "run-s clean check parcel:build workbox:generate",
-    "check": "run-s check:*",
-    "check:eslint": "eslint './src/**/*.{js,jsx,ts,tsx}'",
-    "check:typescript": "tsc --noEmit",
+    "build": "run-s clean parcel:build workbox:generate",
     "clean": "run-s clean:*",
     "clean:cache": "rimraf ./.cache",
     "clean:coverage": "rimraf ./coverage",
