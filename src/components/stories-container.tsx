@@ -18,7 +18,8 @@ function StoriesContainer(): JSX.Element {
     return (
         <>
             <main className="flex flex-row flex-wrap justify-center space-y-5">
-                {storyIds.isLoaded &&
+                {!storyIds.hasFailed ? (
+                    storyIds.isLoaded &&
                     storyIds.data.slice(0, storyCount).map((id: number, index: number) => {
                         const secondToLastRef =
                             storyCount < MAX_STORY_ITEMS && index + 2 === storyCount
@@ -30,7 +31,14 @@ function StoriesContainer(): JSX.Element {
                                 <StoryItem id={id} />
                             </div>
                         );
-                    })}
+                    })
+                ) : (
+                    <div className="border border-red-300 bg-red-100 shadow rounded-md p-4 w-full">
+                        <div className="text-center text-red-500 italic leading-none h-5 my-4">
+                            Well… That was unexpected… Have you tried to refresh the page?
+                        </div>
+                    </div>
+                )}
             </main>
         </>
     );

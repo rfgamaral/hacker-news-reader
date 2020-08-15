@@ -1,6 +1,8 @@
 {
   "extends": [
     "@rfgamaral/eslint-config-typescript-unified/recommended-react-hooks",
+    "plugin:testing-library/recommended",
+    "plugin:jest-dom/recommended",
     "plugin:jest/recommended",
     "plugin:jest/style"
   ],
@@ -30,7 +32,8 @@
     },
     {
       "files": [
-        "*.{test,spec}.{js,jsx,ts,tsx}"
+        "*.{test,spec}.{js,jsx,ts,tsx}",
+        "**/mocks/**"
       ],
       "rules": {
         "import/no-extraneous-dependencies": [

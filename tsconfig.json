@@ -29,9 +29,6 @@
     "sourceMap": true,
     "suppressImplicitAnyIndexErrors": true
   },
-  "include": [
-    "./src/**/*"
-  ],
   "exclude": [
     "./.cache/**/*",
     "./coverage/**/*",

@@ -18,17 +18,19 @@
     }
   },
   "scripts": {
-    "build": "run-s clean parcel:build workbox:generate",
+    "build": "run-s clean:cache clean:dist parcel:build workbox:generate",
     "clean": "run-s clean:*",
     "clean:cache": "rimraf ./.cache",
     "clean:coverage": "rimraf ./coverage",
     "clean:dist": "rimraf ./dist",
+    "jest:coverage": "jest --coverage",
+    "jest:watch": "jest --watch",
     "parcel:build": "parcel build ./src/index.html --out-dir ./dist",
     "parcel:serve": "parcel serve ./src/index.html --out-dir ./dist --host localhost.ricardoamaral.dev --cert ./config/ssl/certificate.cer --key ./config/ssl/private.key",
-    "start": "run-s clean parcel:serve",
+    "start": "run-s clean:cache clean:dist parcel:serve",
     "test": "run-s test:once",
-    "test:once": "jest --coverage",
-    "test:watch": "jest --watch",
+    "test:once": "run-s clean:coverage jest:coverage",
+    "test:watch": "run-s jest:watch",
     "vercel:development": "vercel",
     "vercel:production": "vercel --prod",
     "workbox:generate": "workbox generateSW workbox.config.js"
@@ -58,6 +60,8 @@
     "@types/react-dom": "16.9.8",
     "eslint": "7.6.0",
     "eslint-plugin-jest": "23.20.0",
+    "eslint-plugin-jest-dom": "3.1.7",
+    "eslint-plugin-testing-library": "3.6.0",
     "husky": "4.2.5",
     "identity-obj-proxy": "3.0.0",
     "jest": "26.4.0",
@@ -81,6 +85,7 @@
     "typescript": "3.9.7",
     "typescript-plugin-css-modules": "2.4.0",
     "vercel": "19.2.0",
+    "whatwg-fetch": "3.4.0",
     "workbox-cli": "5.1.3"
   }
 }
