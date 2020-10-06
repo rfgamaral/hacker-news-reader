@@ -37,7 +37,7 @@ function buildApiUrl(path: Path, id?: number): string {
 function useHackerNews<TPath extends Path>(path: TPath, id?: number): HackerNewsResult<TPath> {
     const apiUrl = buildApiUrl(path, id);
 
-    const response = useFetch(apiUrl);
+    const response = useFetch<HackerNewsData<TPath>>(apiUrl);
 
     if (response.status === 'FAILURE') {
         return { hasFailed: true, isLoaded: false };
@@ -47,7 +47,7 @@ function useHackerNews<TPath extends Path>(path: TPath, id?: number): HackerNews
         return { hasFailed: false, isLoaded: false };
     }
 
-    return { hasFailed: false, isLoaded: true, data: response.data as HackerNewsData<TPath> };
+    return { hasFailed: false, isLoaded: true, data: response.data };
 }
 
 export { useHackerNews };

@@ -1,17 +1,21 @@
 import { useEffect, useReducer } from 'react';
+import type { Reducer } from 'react';
 
-type FetchState =
+type FetchState<TData> =
     | { status: 'INITIAL' }
     | { status: 'LOADING' }
-    | { status: 'SUCCESS'; data: unknown }
+    | { status: 'SUCCESS'; data: TData }
     | { status: 'FAILURE'; error: Error };
 
-type FetchAction =
+type FetchAction<TData> =
     | { type: 'REQUEST' }
-    | { type: 'RESOLVE'; data: unknown }
+    | { type: 'RESOLVE'; data: TData }
     | { type: 'REJECT'; error: Error };
 
-function fetchReducer(state: FetchState, action: FetchAction): FetchState {
+function fetchReducer<TData>(
+    state: FetchState<TData>,
+    action: FetchAction<TData>
+): FetchState<TData> {
     switch (action.type) {
         case 'REQUEST':
             return { status: 'LOADING' };
@@ -24,8 +28,13 @@ function fetchReducer(state: FetchState, action: FetchAction): FetchState {
     }
 }
 
-function useFetch(url: string, options?: RequestInit): FetchState {
-    const [state, dispatch] = useReducer(fetchReducer, { status: 'INITIAL' });
+function useFetch<TData = unknown>(url: string, options?: RequestInit): FetchState<TData> {
+    const [state, dispatch] = useReducer<Reducer<FetchState<TData>, FetchAction<TData>>>(
+        fetchReducer,
+        {
+            status: 'INITIAL',
+        }
+    );
 
     useEffect(() => {
         let isMounted = true;
