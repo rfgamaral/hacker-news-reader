@@ -26,7 +26,7 @@
     "jest:coverage": "jest --coverage",
     "jest:watch": "jest --watch",
     "parcel:build": "parcel build ./src/index.html --out-dir ./dist",
-    "parcel:serve": "parcel serve ./src/index.html --out-dir ./dist --host localhost.ricardoamaral.dev --cert ./config/ssl/certificate.cer --key ./config/ssl/private.key",
+    "parcel:serve": "parcel serve ./src/index.html --out-dir ./dist --https",
     "start": "run-s clean:cache clean:dist parcel:serve",
     "test": "run-s test:once",
     "test:once": "run-s clean:coverage jest:coverage",
