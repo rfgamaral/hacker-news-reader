@@ -1,6 +1,6 @@
 # Hacker News Reader
 
-A basic Hacker News reader application for exceptionally impatient users.
+A basic Hacker News reader application for exceptionally impatient users, developed in the context of a programming challenge for [Doist](https://doist.com).
 
 ## Instructions
 
@@ -8,7 +8,7 @@ A basic Hacker News reader application for exceptionally impatient users.
 
 Before launching the development server or building a production distribution for deployment, project dependencies must first be installed:
 
-```sh
+```properties
 # npm
 npm install
 
@@ -20,7 +20,7 @@ yarn install
 
 To run the development server with hot module reloading but without offline capabilities:
 
-```sh
+```properties
 # npm
 npm start
 
@@ -38,7 +38,7 @@ The [Hacker News API](https://github.com/HackerNews/API) is only served over HTT
 
 To run all unit tests and output a coverage report:
 
-```sh
+```properties
 # npm
 npm test
 
@@ -50,7 +50,7 @@ yarn test
 
 To build a distribution ready for production with minified assets, hashed resources, and a service worker with offline capabilities:
 
-```sh
+```properties
 # npm
 npm run build
 
@@ -63,6 +63,11 @@ yarn build
 A live demo with offline capabilities was deployed to [Vercel](https://vercel.com/) and is available at:
 
 - https://hacker-news-reader.ricardoamaral.dev
+
+## TODO
+
+- Implement unit tests for the `useIntersectionObserver` React hook
+- Implement integration tests for the _infinite scroll_ behavior
 
 ## Technology
 
